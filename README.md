@@ -9,13 +9,13 @@ This repository contains the public Codex skill for the closed-source `officecli
 Use `wget`:
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/officecli/office-cli-skills/main/scripts/install-skill.sh | bash -s -- officecli
+wget -qO- https://raw.githubusercontent.com/officecli/officecli-skills/main/scripts/install-skill.sh | bash -s -- officecli
 ```
 
 Or use `curl`:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/officecli/office-cli-skills/main/scripts/install-skill.sh | bash -s -- officecli
+curl -fsSL https://raw.githubusercontent.com/officecli/officecli-skills/main/scripts/install-skill.sh | bash -s -- officecli
 ```
 
 The installer will:
@@ -39,7 +39,7 @@ Re-running the same installer command refreshes the local skill to the latest ve
 If you only want the skill and do not want to auto-install the binary:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/officecli/office-cli-skills/main/scripts/install-skill.sh | AUTO_INSTALL_BINARY=0 bash -s -- officecli
+curl -fsSL https://raw.githubusercontent.com/officecli/officecli-skills/main/scripts/install-skill.sh | AUTO_INSTALL_BINARY=0 bash -s -- officecli
 ```
 
 ### Update
@@ -47,13 +47,13 @@ curl -fsSL https://raw.githubusercontent.com/officecli/office-cli-skills/main/sc
 To update an existing local skill from GitHub, run the same install command again:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/officecli/office-cli-skills/main/scripts/install-skill.sh | bash -s -- officecli
+curl -fsSL https://raw.githubusercontent.com/officecli/officecli-skills/main/scripts/install-skill.sh | bash -s -- officecli
 ```
 
 Or with `wget`:
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/officecli/office-cli-skills/main/scripts/install-skill.sh | bash -s -- officecli
+wget -qO- https://raw.githubusercontent.com/officecli/officecli-skills/main/scripts/install-skill.sh | bash -s -- officecli
 ```
 
 ### Manual install
@@ -64,7 +64,7 @@ Copy the skill directory into your local Codex skills directory:
 mkdir -p ~/.codex/skills
 
 tmpdir="$(mktemp -d)"
-git clone https://github.com/officecli/office-cli-skills.git "$tmpdir/repo"
+git clone https://github.com/officecli/officecli-skills.git "$tmpdir/repo"
 cp -R "$tmpdir/repo/skills/officecli" ~/.codex/skills/
 ```
 

@@ -2,14 +2,14 @@
 
 set -euo pipefail
 
-REPO_URL="${REPO_URL:-https://github.com/officecli/office-cli-skills.git}"
-SKILL_NAME="${1:-office-cli}"
+REPO_URL="${REPO_URL:-https://github.com/officecli/officecli-skills.git}"
+SKILL_NAME="${1:-officecli}"
 DEST_ROOT="${DEST_ROOT:-${HOME}/.codex/skills}"
 AUTO_INSTALL_BINARY="${AUTO_INSTALL_BINARY:-1}"
-DIST_REPO="${DIST_REPO:-officecli/office-cli-dist}"
-HOMEBREW_TAP_REPO="${HOMEBREW_TAP_REPO:-officecli/homebrew-office-cli}"
-HOMEBREW_TAP_NAME="${HOMEBREW_TAP_NAME:-officecli/office-cli}"
-HOMEBREW_FORMULA="${HOMEBREW_FORMULA:-officecli/office-cli/office-cli}"
+DIST_REPO="${DIST_REPO:-officecli/officecli-dist}"
+HOMEBREW_TAP_REPO="${HOMEBREW_TAP_REPO:-officecli/homebrew-officecli}"
+HOMEBREW_TAP_NAME="${HOMEBREW_TAP_NAME:-officecli/officecli}"
+HOMEBREW_FORMULA="${HOMEBREW_FORMULA:-officecli/officecli/officecli}"
 LINUX_PREFIX="${LINUX_PREFIX:-${HOME}/.local}"
 LINUX_BIN_DIR="${LINUX_BIN_DIR:-${LINUX_PREFIX}/bin}"
 
@@ -53,18 +53,18 @@ install_binary_linux() {
 
 install_binary_via_dist() {
   if ! command -v curl >/dev/null 2>&1; then
-    echo "warning: curl not found, skipped office-cli binary auto-install" >&2
+    echo "warning: curl not found, skipped officecli binary auto-install" >&2
     return 1
   fi
 
-  if curl -fsSL "https://raw.githubusercontent.com/${DIST_REPO}/main/scripts/install-office-cli.sh"     | PREFIX="${LINUX_PREFIX}" BIN_DIR="${LINUX_BIN_DIR}" INSTALL_DIR="${LINUX_BIN_DIR}" DIST_REPO="${DIST_REPO}" bash; then
+  if curl -fsSL "https://raw.githubusercontent.com/${DIST_REPO}/main/scripts/install-officecli.sh"     | PREFIX="${LINUX_PREFIX}" BIN_DIR="${LINUX_BIN_DIR}" INSTALL_DIR="${LINUX_BIN_DIR}" DIST_REPO="${DIST_REPO}" bash; then
     if [[ ":$PATH:" != *":${LINUX_BIN_DIR}:"* ]]; then
-      echo "note: add ${LINUX_BIN_DIR} to PATH to use office-cli directly"
+      echo "note: add ${LINUX_BIN_DIR} to PATH to use officecli directly"
     fi
     return 0
   fi
 
-  echo "warning: failed to auto-install office-cli binary from public dist" >&2
+  echo "warning: failed to auto-install officecli binary from public dist" >&2
   return 1
 }
 
@@ -80,7 +80,7 @@ install_binary_macos() {
     fi
 
     if brew install "${HOMEBREW_FORMULA}" >/dev/null 2>&1 || brew upgrade "${HOMEBREW_FORMULA}" >/dev/null 2>&1; then
-      command -v office-cli >/dev/null 2>&1 && return 0
+      command -v officecli >/dev/null 2>&1 && return 0
     fi
 
     echo "warning: brew install failed, falling back to direct binary install" >&2
@@ -95,12 +95,12 @@ auto_install_binary_if_missing() {
   local os_name
 
   if [[ "${AUTO_INSTALL_BINARY}" != "1" ]]; then
-    echo "skipped office-cli binary auto-install (AUTO_INSTALL_BINARY=${AUTO_INSTALL_BINARY})"
+    echo "skipped officecli binary auto-install (AUTO_INSTALL_BINARY=${AUTO_INSTALL_BINARY})"
     return 0
   fi
 
-  if command -v office-cli >/dev/null 2>&1; then
-    echo "office-cli binary already available: $(command -v office-cli)"
+  if command -v officecli >/dev/null 2>&1; then
+    echo "officecli binary already available: $(command -v officecli)"
     return 0
   fi
 
@@ -113,15 +113,15 @@ auto_install_binary_if_missing() {
       install_binary_macos || return 0
       ;;
     *)
-      echo "warning: unsupported OS for automatic office-cli install: ${os_name}" >&2
+      echo "warning: unsupported OS for automatic officecli install: ${os_name}" >&2
       return 0
       ;;
   esac
 
-  if command -v office-cli >/dev/null 2>&1; then
-    echo "installed office-cli binary: $(command -v office-cli)"
+  if command -v officecli >/dev/null 2>&1; then
+    echo "installed officecli binary: $(command -v officecli)"
   else
-    echo "warning: office-cli binary auto-install completed without a usable PATH entry" >&2
+    echo "warning: officecli binary auto-install completed without a usable PATH entry" >&2
   fi
 }
 

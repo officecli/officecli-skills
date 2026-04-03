@@ -1,6 +1,6 @@
-# office-cli Skills
+# OfficeCLI Skills
 
-This repository contains the public Codex skill for the closed-source `office-cli` product.
+This repository contains the public Codex skill for the closed-source `officecli` product.
 
 ## Install
 
@@ -9,27 +9,27 @@ This repository contains the public Codex skill for the closed-source `office-cl
 Use `wget`:
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/officecli/office-cli-skills/main/scripts/install-skill.sh | bash -s -- office-cli
+wget -qO- https://raw.githubusercontent.com/officecli/office-cli-skills/main/scripts/install-skill.sh | bash -s -- officecli
 ```
 
 Or use `curl`:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/officecli/office-cli-skills/main/scripts/install-skill.sh | bash -s -- office-cli
+curl -fsSL https://raw.githubusercontent.com/officecli/office-cli-skills/main/scripts/install-skill.sh | bash -s -- officecli
 ```
 
 The installer will:
 
-- install the `office-cli` skill into `~/.codex/skills`
-- try to auto-install the `office-cli` binary when it is missing
+- install the `officecli` skill into `~/.codex/skills`
+- try to auto-install the `officecli` binary when it is missing
 - use Homebrew on macOS when available, and fall back to direct binary install when brew fails
 - use the public Linux installer and install into `~/.local/bin` by default
 
-If `office-cli` is still reported as not found after installation, first try the current-shell fix:
+If `officecli` is still reported as not found after installation, first try the current-shell fix:
 
 ```bash
 export PATH="$HOME/.local/bin:$PATH"
-office-cli --version
+officecli --version
 ```
 
 Then add `~/.local/bin` to the startup config for your shell if needed.
@@ -39,7 +39,7 @@ Re-running the same installer command refreshes the local skill to the latest ve
 If you only want the skill and do not want to auto-install the binary:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/officecli/office-cli-skills/main/scripts/install-skill.sh | AUTO_INSTALL_BINARY=0 bash -s -- office-cli
+curl -fsSL https://raw.githubusercontent.com/officecli/office-cli-skills/main/scripts/install-skill.sh | AUTO_INSTALL_BINARY=0 bash -s -- officecli
 ```
 
 ### Update
@@ -47,13 +47,13 @@ curl -fsSL https://raw.githubusercontent.com/officecli/office-cli-skills/main/sc
 To update an existing local skill from GitHub, run the same install command again:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/officecli/office-cli-skills/main/scripts/install-skill.sh | bash -s -- office-cli
+curl -fsSL https://raw.githubusercontent.com/officecli/office-cli-skills/main/scripts/install-skill.sh | bash -s -- officecli
 ```
 
 Or with `wget`:
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/officecli/office-cli-skills/main/scripts/install-skill.sh | bash -s -- office-cli
+wget -qO- https://raw.githubusercontent.com/officecli/office-cli-skills/main/scripts/install-skill.sh | bash -s -- officecli
 ```
 
 ### Manual install
@@ -65,7 +65,7 @@ mkdir -p ~/.codex/skills
 
 tmpdir="$(mktemp -d)"
 git clone https://github.com/officecli/office-cli-skills.git "$tmpdir/repo"
-cp -R "$tmpdir/repo/skills/office-cli" ~/.codex/skills/
+cp -R "$tmpdir/repo/skills/officecli" ~/.codex/skills/
 ```
 
 After copying, restart Codex.
@@ -73,10 +73,10 @@ After copying, restart Codex.
 ## Scope
 
 - Public `SKILL.md` content and examples
-- No closed-source `office-cli` implementation code
+- No closed-source `officecli` implementation code
 - No private repository metadata or internal deployment details
 
 ## Layout
 
-- `skills/office-cli/`: public skill definition
+- `skills/officecli/`: public skill definition
 - `scripts/install-skill.sh`: shell installer for direct `wget` / `curl` usage
